@@ -17,7 +17,7 @@ public class LetsMineBlueMapAddOn implements Runnable {
         // Copy ssh.conf to storage folder
 
 
-        private final Key key = Key.parse("letsmine", "ssh");
+        private final Key key = new Key("letsmine", "ssh");
 
         private final Class<? extends StorageConfig> configType = SshConfig.class;
 
