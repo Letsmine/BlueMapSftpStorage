@@ -1,0 +1,4 @@
+{
+  "id": "letsmine",
+  "entrypoint": "eu.letsmine.bluemap.LetsMineBlueMapAddOn"
+}
