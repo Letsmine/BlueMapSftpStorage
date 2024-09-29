@@ -1,6 +1,6 @@
 plugins {
     `java-library`
-    id ("com.github.johnrengelman.shadow") version "7.1.2"
+    id("com.gradleup.shadow") version "8.3.2"
 }
 
 group = "eu.letsmine.bluemap"
@@ -26,11 +26,12 @@ dependencies {
 }
 
 tasks.shadowJar {
-    //relocate( "com.pastdev", "eu.letsmine.bluemap.shadow.jsch-nio" )
+    //relocate( "com", "eu.letsmine.bluemap.shadow.com" )
+    //relocate( "org", "eu.letsmine.bluemap.shadow.org" )
 
     doLast {
         destinationDirectory.file(archiveFileName).get().asFile
-            .copyTo(projectDir.resolve("build/release/bluemap-sshstorage-$version.jar"))
+            .copyTo(projectDir.resolve("build/release/letsmine-bluemap-$version.jar"))
     }
 }
 
