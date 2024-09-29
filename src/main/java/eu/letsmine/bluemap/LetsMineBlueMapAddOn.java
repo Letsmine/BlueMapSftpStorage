@@ -3,23 +3,20 @@ package eu.letsmine.bluemap;
 import de.bluecolored.bluemap.common.config.storage.StorageConfig;
 import de.bluecolored.bluemap.common.config.storage.StorageType;
 import de.bluecolored.bluemap.core.util.Key;
-import eu.letsmine.bluemap.storage.ssh.SshConfig;
+import eu.letsmine.bluemap.storage.sftp.SftpConfig;
 
 public class LetsMineBlueMapAddOn implements Runnable {
 
     @Override
     public void run() {
-        StorageType.REGISTRY.register(new SshStorageType());
+        StorageType.REGISTRY.register(new SftpStorageType());
     }
 
-    class SshStorageType implements StorageType {
+    class SftpStorageType implements StorageType {
 
-        // Copy ssh.conf to storage folder
+        private final Key key = new Key("letsmine", "sftp");
 
-
-        private final Key key = new Key("letsmine", "ssh");
-
-        private final Class<? extends StorageConfig> configType = SshConfig.class;
+        private final Class<? extends StorageConfig> configType = SftpConfig.class;
 
         @Override
         public Key getKey() {

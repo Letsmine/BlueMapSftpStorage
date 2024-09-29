@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "eu.letsmine.bluemap"
-version = "0.1"
+version = "0.2"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
@@ -22,13 +22,13 @@ repositories {
 dependencies {
     compileOnly ( "de.bluecolored.bluemap:BlueMapCore:5.3" )
     compileOnly ( "de.bluecolored.bluemap:BlueMapCommon:5.3" )
-    implementation("com.pastdev:jsch-nio:1.0.14")
+    implementation("com.github.robtimus:sftp-fs:3.3.1")
 }
 
 tasks.shadowJar {
-    //relocate( "com", "eu.letsmine.bluemap.shadow.com" )
-    //relocate( "org", "eu.letsmine.bluemap.shadow.org" )
-
+    relocate( "com.jcraft.jsch", "eu.letsmine.bluemap.shadow.com.jcraft.jsch" )
+    relocate( "com.github.robtimus.filesystems", "eu.letsmine.bluemap.shadow.com.github.robtimus.filesystems" )
+    relocate( "com.github.robtimus.pool", "eu.letsmine.bluemap.shadow.com.github.robtimus.pool" )
     doLast {
         destinationDirectory.file(archiveFileName).get().asFile
             .copyTo(projectDir.resolve("build/release/letsmine-bluemap-$version.jar"))
