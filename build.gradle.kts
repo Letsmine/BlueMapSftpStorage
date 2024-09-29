@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "eu.letsmine.bluemap"
-version = "1.1"
+version = "0.1"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
