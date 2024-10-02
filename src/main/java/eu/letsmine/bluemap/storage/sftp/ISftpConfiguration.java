@@ -11,5 +11,10 @@ public interface ISftpConfiguration {
     public Map<String, String> getConfig();
     public Optional<String> getPassword();
     public Optional<Path> getKnownHosts();
+
+    public int getPoolSize();
+    public int getPoolInit();
+    public int getPoolIdle();
+    public int getPoolWait();
     
 }

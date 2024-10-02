@@ -26,6 +26,11 @@ public class SftpConfig extends StorageConfig implements ISftpConfiguration {
     private String compression = Compression.GZIP.getKey().getFormatted();
     private Map<String, String> config = new HashMap<String, String>();
 
+    private int poolSize = 5;
+    private int poolInit = 1;
+    private int poolIdle = -1;
+    private int poolWait = -1;
+
     public Compression getCompression() throws ConfigurationException {
         return Compression.REGISTRY.get(Key.bluemap(compression));
     }
@@ -56,6 +61,26 @@ public class SftpConfig extends StorageConfig implements ISftpConfiguration {
     @Override
     public Map<String, String> getConfig() {
         return config;
+    }
+
+    @Override
+    public int getPoolSize() {
+        return poolSize;
+    }
+
+    @Override
+    public int getPoolInit() {
+        return poolInit;
+    }
+
+    @Override
+    public int getPoolIdle() {
+        return poolIdle;
+    }
+
+    @Override
+    public int getPoolWait() {
+        return poolWait;
     }
 
 }

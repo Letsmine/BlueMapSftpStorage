@@ -6,11 +6,13 @@ import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
+import java.time.Duration;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
 import com.github.robtimus.filesystems.sftp.SFTPEnvironment;
 import com.github.robtimus.filesystems.sftp.SFTPFileSystemProvider;
+import com.github.robtimus.filesystems.sftp.SFTPPoolConfig;
 
 import de.bluecolored.bluemap.core.storage.Storage;
 import de.bluecolored.bluemap.core.storage.compression.Compression;
@@ -42,13 +44,25 @@ public class SftpStorage implements Storage {
     @Override
     public void initialize() throws IOException {
         SFTPEnvironment env = new SFTPEnvironment();
+
+        // Load custom configuration to environment
         config.getConfig().forEach(env::withConfig);
+
         if (config.getKnownHosts().isPresent()) {
             env.withKnownHosts(config.getKnownHosts().get().toFile());
         }
+
         if (config.getPassword().isPresent()) {
             env.withPassword(config.getPassword().get().toCharArray());
         }
+        
+        var builder = SFTPPoolConfig.custom()
+                                    .withMaxSize(config.getPoolSize())
+                                    .withInitialSize(config.getPoolInit())
+                                    .withMaxIdleTime(Duration.ofSeconds(config.getPoolIdle()))
+                                    .withMaxWaitTime(Duration.ofSeconds(config.getPoolWait()));
+
+        env.withPoolConfig(builder.build());
         SFTPEnvironment.setDefault(env);
 
         try {
