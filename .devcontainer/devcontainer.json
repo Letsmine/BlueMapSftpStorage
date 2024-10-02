@@ -1,13 +1,13 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/java
 {
-	"name": "BlueMap SSH Storage",
+	"name": "BlueMap SFTP Storage",
 	"image": "mcr.microsoft.com/devcontainers/java:21-bullseye",
 
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
 			"version": "none",
-			"jdkDistro": "open",
+			"jdkDistro": "tem",
 			"installMaven": "false",
 			"installGradle": "true",
 			"gradleVersion": "8.10"
@@ -25,5 +25,5 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// Java feature sets the java home to /usr/lib/jvm/msopenjdk-current but don't create a symlink. Do it manually.
-	"postCreateCommand": "mkdir /usr/local/sdkman/candidates/java&&ln -s /usr/lib/jvm/msopenjdk-current /usr/local/sdkman/candidates/java/current&&java -version&&gradle --version"
+	"postCreateCommand": "mkdir /usr/local/sdkman/candidates/java&&ln -s /usr/lib/jvm/msopenjdk-current /usr/local/sdkman/candidates/java/current&&gradle --version"
 }
