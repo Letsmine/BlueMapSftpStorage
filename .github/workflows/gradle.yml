@@ -32,9 +32,9 @@ jobs:
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
-        with:
-          name: artifacts
-          path: build/release/*
+      with:
+        name: artifacts
+        path: build/release/*
 
   dependency-submission:
 
