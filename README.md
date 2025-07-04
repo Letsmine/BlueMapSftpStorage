@@ -8,7 +8,7 @@ This addon provides SFTP storage support for BlueMap.
    - Get the latest version of the addon from the [releases page](../../releases/latest).
 
 2. **Install the AddOn**
-   - Place the downloaded `BlueMapSshStorage-{version}.jar` file into the `addons` folder located next to your BlueMap configuration files.
+   - Place the downloaded `BlueMapSshStorage-{version}.jar` file into the `packs` folder located next to your BlueMap configuration files, it should look like `BlueMap/packs/letsmine-bluemap-0.3.jar`.
 
 3. **Configure SFTP**
    - Copy the [sftp.conf](./src/main/resources/sftp.conf) file to the `storage` folder located next to your BlueMap configuration files.
