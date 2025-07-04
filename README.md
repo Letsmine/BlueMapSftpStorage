@@ -17,7 +17,7 @@ This addon provides SFTP storage support for BlueMap.
 4. **Update BlueMap Map Configuration**
    - Modify the storage setting in your map configuration files (`maps/*.conf`) to use the SFTP storage:
      ```json
-     "storage": "letsmine:sftp"
+     "storage": "sftp"
      ```
 
 5. **Reload BlueMap**
@@ -28,3 +28,12 @@ With the `ssh-keyscan` command you cann create/append your `known_hosts` file.
 - `ssh-keyscan -H example.com >> known_hosts`
 - `ssh-keyscan -H -p 23 u001.your-storagebox.de >> known_hosts`
 You can now use that file in your `sftp.conf`
+
+## Multiple Connections
+
+1. Copy the [sftp.conf](./src/main/resources/sftp.conf) file to the `storage` folder, Name the file however you like, for example: `second-sftp.conf`
+2. Modify the storage setting in your map configuration files (`maps/*.conf`) to use the new SFTP storage:
+     ```json
+     "storage": "second-sftp"
+     ```
+   The name of the `*.conf` File is used for the storage setting in the `maps/*.conf`.
