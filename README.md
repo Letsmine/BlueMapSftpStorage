@@ -1,6 +1,7 @@
 # BlueMap SFTP Storage AddOn
 
 This addon provides SFTP storage support for BlueMap.
+Latest tested BlueMap Version: 5.23
 
 ## Usage Instructions
 
